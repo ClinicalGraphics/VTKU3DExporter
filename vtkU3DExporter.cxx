@@ -849,7 +849,11 @@ void vtkU3DExporter::WriteData()
                                 if ( colorCoordinates )
                                 {
                                     vtkIdType npts = 0;
-                                    vtkIdType *indx = 0;
+#if VTK_MAJOR_VERSION >= 9 || (VTK_MAJOR_VERSION >= 8 && VTK_MINOR_VERSION >= 90)
+                                    const vtkIdType *indx = nullptr;
+#else
+                                    vtkIdType *indx = nullptr;
+#endif
 
                                     VTK_DECLARE(vtkPoints, ucolorCoordinates);   // unique colors
                                     VTK_DECLARE(vtkIdList, ucolorCoordinatesIds); // ids of original colors in ucolors
@@ -1029,7 +1033,11 @@ void vtkU3DExporter::WriteData()
                                 else if ( colors && cell_colors)
                                 {
                                     vtkIdType npts = 0;
-                                    vtkIdType *indx = 0;
+#if VTK_MAJOR_VERSION >= 9 || (VTK_MAJOR_VERSION >= 8 && VTK_MINOR_VERSION >= 90)
+                                    const vtkIdType *indx = nullptr;
+#else
+                                    vtkIdType *indx = nullptr;
+#endif
 
                                     VTK_DECLARE(vtkDoubleArray, ucolors);   // unique colors
                                     VTK_DECLARE(vtkIdList, ucolorIds); // ids of original colors in ucolors
@@ -1223,7 +1231,11 @@ void vtkU3DExporter::WriteData()
                                     // Use vertex colors, lighting and transparency are not supported by Acrobat <= 9.1
                                 {
                                     vtkIdType npts = 0;
-                                    vtkIdType *indx = 0;
+#if VTK_MAJOR_VERSION >= 9 || (VTK_MAJOR_VERSION >= 8 && VTK_MINOR_VERSION >= 90)
+                                    const vtkIdType *indx = nullptr;
+#else
+                                    vtkIdType *indx = nullptr;
+#endif
 
                                     VTK_DECLARE(vtkPoints, ucolors);   // unique colors
                                     VTK_DECLARE(vtkIdList, ucolorIds); // ids of original colors in ucolors
@@ -1491,7 +1503,11 @@ AddLine(LineSet, point1, point2, NULL, NULL);        \
                                 {
                                     vtkIdType cellOffset = numVerts+numLines;
                                     vtkIdType npts = 0;
-                                    vtkIdType *indx = 0;
+#if VTK_MAJOR_VERSION >= 9 || (VTK_MAJOR_VERSION >= 8 && VTK_MINOR_VERSION >= 90)
+                                    const vtkIdType *indx = nullptr;
+#else
+                                    vtkIdType *indx = nullptr;
+#endif
                                     for (polys->InitTraversal(); polys->GetNextCell(npts,indx); cellOffset++)
                                     {
                                         for (vtkIdType cc=0; cc < npts; cc++)
@@ -1505,7 +1521,11 @@ AddLine(LineSet, point1, point2, NULL, NULL);        \
                                 {
                                     vtkIdType cellOffset = numVerts;
                                     vtkIdType npts = 0;
-                                    vtkIdType *indx = 0;
+#if VTK_MAJOR_VERSION >= 9 || (VTK_MAJOR_VERSION >= 8 && VTK_MINOR_VERSION >= 90)
+                                    const vtkIdType *indx = nullptr;
+#else
+                                    vtkIdType *indx = nullptr;
+#endif
                                     for (lines->InitTraversal(); lines->GetNextCell(npts,indx); cellOffset++)
                                     {
                                         if (npts == 1)
@@ -1523,7 +1543,11 @@ AddLine(LineSet, point1, point2, NULL, NULL);        \
                                 {
                                     vtkIdType cellOffset = numVerts+numLines+numPolys;
                                     vtkIdType npts = 0;
-                                    vtkIdType *indx = 0;
+#if VTK_MAJOR_VERSION >= 9 || (VTK_MAJOR_VERSION >= 8 && VTK_MINOR_VERSION >= 90)
+                                    const vtkIdType *indx = nullptr;
+#else
+                                    vtkIdType *indx = nullptr;
+#endif
                                     for (tstrips->InitTraversal(); tstrips->GetNextCell(npts,indx); cellOffset++)
                                     {
                                         if (npts == 1)
@@ -1696,7 +1720,11 @@ AddLine(LineSet, point1, point2, NULL, NULL);        \
                                     pointlocator->InitPointInsertion(upoints, pointbounds, numPoints);
 
                                     vtkIdType npts = 0;
-                                    vtkIdType *indx = 0;
+#if VTK_MAJOR_VERSION >= 9 || (VTK_MAJOR_VERSION >= 8 && VTK_MINOR_VERSION >= 90)
+                                    const vtkIdType *indx = nullptr;
+#else
+                                    vtkIdType *indx = nullptr;
+#endif
                                     for (verts->InitTraversal(); verts->GetNextCell(npts,indx); )
                                     {
                                         for (vtkIdType cc=0; cc < npts; cc++)
