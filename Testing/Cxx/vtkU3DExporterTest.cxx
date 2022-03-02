@@ -74,12 +74,12 @@
   VTK_CREATE(vtkTransform, transform##name);                \
   transform##name->Translate(x, y, z);                      \
   VTK_CREATE(vtkTransformFilter, trans##name##Filter);      \
-  trans##name##Filter->SetInput(a##name##Grid);             \
+  trans##name##Filter->SetInputData(a##name##Grid);   \
   trans##name##Filter->SetTransform(transform##name);       \
-  appendF->AddInput(trans##name##Filter->GetOutput());      \
+  appendF->AddInputConnection(trans##name##Filter->GetOutputPort());      \
                                                             \
   VTK_CREATE(vtkDataSetMapper, a##name##Mapper);            \
-  a##name##Mapper->SetInput(a##name##Grid);                 \
+  a##name##Mapper->SetInputData(a##name##Grid);                 \
                                                             \
   vtkActor *a##name##Actor = vtkActor::New();               \
   a##name##Actor->SetMapper(a##name##Mapper);               \
@@ -87,7 +87,7 @@
   a##name##Actor->GetProperty()->BackfaceCullingOn();
 
 
-int main( int argc, char *argv[] )
+int vtkU3DExporterTest( int argc, char *argv[] )
 {
 
   VTK_CREATE(vtkUnstructuredGrid, aGrid);
