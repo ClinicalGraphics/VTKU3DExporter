@@ -8,7 +8,7 @@ import sys
 from skbuild import setup
 
 
-VTK_DEFAULT_WHEEL_SDK_VERSION = "9.2.5"
+VTK_DEFAULT_WHEEL_SDK_VERSION = "9.3.0"
 
 
 vtk_module_source_dir = Path(__file__).parent.resolve()
@@ -232,7 +232,7 @@ setup(
         "vtkmodules.__pyinstaller_vtkU3DExporter": "lib/vtkmodules/__pyinstaller_vtkU3DExporter",
     },
     cmake_args=cmake_args,
-    install_requires=["vtk==9.2.5"],
+    install_requires=["vtk==9.3.0"],
     project_urls={  # Optional
         "Bug Reports": "https://github.com/ClinicalGraphics/VTKU3DExporter/issues",
         "Source": "https://github.com/ClinicalGraphics/VTKU3DExporter/",

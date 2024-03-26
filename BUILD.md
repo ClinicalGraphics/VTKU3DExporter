@@ -1,5 +1,7 @@
 # Running the build locally on Windows
 
+Using powershell.
+
 First time:
 
 ```pwsh
@@ -15,6 +17,8 @@ Subsequent builds require clearing the `_skbuild` and `wheelhouse` folders or th
 ```pwsh
 Remove-Item -Recurse -Force ./_skbuild && Remove-Item -Recurse -Force ./wheelhouse && .venv/Scripts/cibuildwheel --only cp39-win_amd64
 ```
+
+If you the build fails because of the test step, and you want to prevent cibuildwheel from discarding the .whl file, just `$env:CIBW_TEST_COMMAND = ""`
 
 ## Testing the build locally on Windows
 

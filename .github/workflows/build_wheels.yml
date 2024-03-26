@@ -19,7 +19,8 @@ concurrency:
 env:
   # Only support 64-bit CPython >= 3.7
   # Only support macOS ARM 64-bit CPython >= 3.9 (older VTK wheels and SDKs not available)
-  CIBW_SKIP: "cp27-* cp35-* cp36-* cp37-* cp312-* pp* *-manylinux_i686 *-musllinux_* *-win32 cp38-macosx_arm64"
+  # Temporarily skipe everything except cp312
+  CIBW_SKIP: "cp27-* cp35-* cp36-* cp37-* cp38-* cp39-* cp310-* cp311-* pp* *-manylinux_i686 *-musllinux_* *-win32 cp38-macosx_arm64"
 
   # Need to match the version used by VTK
   CIBW_ENVIRONMENT_MACOS: MACOSX_DEPLOYMENT_TARGET=10.10
